@@ -29,7 +29,7 @@ int num_aleatorio(int limite_inf, int limite_sup) {
     return (limite_inf + rand() % limite_sup);
 }
 
-int gerar_arquivo(int tamanho_linha, int tamanho_coluna, int N, int acrecimo) {
+int gerar_arquivo(int tamanho_linha, int tamanho_coluna, int N, int acrescimo) {
     FILE *arquivo;
     int x1, y1,
         x2, y2,
@@ -73,8 +73,8 @@ int gerar_arquivo(int tamanho_linha, int tamanho_coluna, int N, int acrecimo) {
                 c = num_aleatorio(0, 5);
                 fprintf(arquivo, "%d %d %c\n", c1, c2, coord[c]);
             }
-            tamanho_linha += acrecimo;
-            tamanho_coluna += acrecimo;
+            tamanho_linha += acrescimo;
+            tamanho_coluna += acrescimo;
         }
         k++;
     }
