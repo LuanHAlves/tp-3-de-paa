@@ -84,7 +84,6 @@ int gerar_arquivo(int tamanho_linha, int tamanho_coluna, int N, int acrecimo) {
 
 int le_tamanho_matriz(char url[], int *num_linha, int *num_coluna) {
     FILE *arquivo;
-    // char url[] = "arq.txt";
     if ((arquivo = fopen(url, "r")) == NULL) {
         perror(" Nao foi possivel abrir o arquivo desejado!\n");
         exit(EXIT_FAILURE);
@@ -156,7 +155,8 @@ void inicializa_matriz_count(int num_linha, int num_coluna, unsigned int matriz[
     }
 }
 
-void calcula_rotas(int num_linha, int num_coluna, char matriz_obras[num_linha][num_coluna], unsigned int matriz_count[num_linha][num_coluna]) {
+void calcula_rotas(int num_linha, int num_coluna, char matriz_obras[num_linha][num_coluna], 
+                    unsigned int matriz_count[num_linha][num_coluna]) {
     num_linha--;
     num_coluna--;
 

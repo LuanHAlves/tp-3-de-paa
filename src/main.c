@@ -34,7 +34,7 @@ int main()
         }
     
     if ((opcao = menu_opcoes()) == 2) {
-        printf("\n Ativar Modo Debug? 1-sim ou 0-nao: ");
+        printf("\n Ativar Modo Debug?  (1-SIM ou 0-NAO): ");
         scanf("%d", &debug_flag);
     }
 
@@ -63,22 +63,27 @@ int main()
                 unsigned int matriz_count[num_linha][num_coluna];
 
                 inicializa_matriz_count(num_linha, num_coluna, matriz_count);
-                le_arquivo(url1, num_linha, num_coluna, matriz_obras, &linha_inicio, &coluna_inicio, &linha_chegada, &coluna_chegada);
+                le_arquivo(url1,num_linha,num_coluna,matriz_obras,&linha_inicio,&coluna_inicio,&linha_chegada,&coluna_chegada);
 
                 if(debug_flag) {
                     soma_tempo=0.0;
                     for(int i = 0; i < num_exec; i++){
+                        inicializa_matriz_count(num_linha, num_coluna, matriz_count);
                         tempo_exec = clock(); // #Debug [INICIO]: Tempo de execucao.
                         calcula_rotas(num_linha, num_coluna, matriz_obras, matriz_count);
                         tempo_exec = clock() - tempo_exec; // #Debug [FIM]:
                         
                         soma_tempo += (((double)tempo_exec) / ((CLOCKS_PER_SEC / 1000)));
+                        // imprime_matriz_int(num_linha, num_coluna, matriz_count);
                     }
                     fprintf(arq_resultados, "%d,%f\n", num_linha, (soma_tempo/num_exec));
-                    printf(" Media do tempo de execucao: %f\n", (soma_tempo/num_exec));
+                    printf(" Media do tempo de execucao: %f sec.\n", (soma_tempo/num_exec));
                 } else {
                     calcula_rotas(num_linha, num_coluna, matriz_obras, matriz_count);
-                    // imprime_matriz_int(num_linha, num_coluna, matriz_count);
+                    printf("\n");
+                    imprime_matriz_char(num_linha, num_coluna, matriz_obras);
+                    printf("\n");
+                    imprime_matriz_int(num_linha, num_coluna, matriz_count);
                 }
                 printf(" Existem %u caminhos possiveis do ponto i ao f\n", matriz_count[linha_inicio - 1][coluna_inicio - 1]);
                 printf(" _______________________________________________\n\n");

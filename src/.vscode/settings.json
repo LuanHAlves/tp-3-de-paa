@@ -2,5 +2,7 @@
     "C_Cpp.errorSquiggles": "Disabled",
     "files.associations": {
         "matriz.h": "c"
-    }
+    },
+    "editor.minimap.enabled": false,
+    "window.zoomLevel": -1.5
 }
